@@ -1,81 +1,413 @@
 ---
 layout: page
-title: project 8
-description: an other project with a background image and giscus comments
-img: assets/img/9.jpg
+title: Out of Control Planning
+description:
+img: assets/img/fig1.png
 importance: 2
 category: work
-giscus_comments: true
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+<h1>Problem Statement</h1>
+<ul>
+<li>Plan motions for non-holonomic systems whose dynamics are described by an ordinary differential equation of the form $$\dot{q} = f(q,u)$$</li>
+<li>Compute the dynamically feasible and collision free motions for these systems using RRt and KPIECE planners</li>
+<li>Learn about and implement a new planner called Reachability-Guided RRT (RG-RRT)</li>
+</ul>
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
+<h2>Results</h2>
+The path for the three different planners KPIECE RRT and RGRRT are shown below:
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/pendulum_path_KPIECE_Tau1.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/pendulum_path_RRT_Tau1.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/pendulum_path_RGRRT_Tau1.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
+    Pendulum Path planners. Left image shows KPIECE planner, middle image RRT and right image shows RGRRT planner.
 </div>
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/car_path_KPIECE.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/car_path_RRT.png" title="example image" class="img-fluid rounded z-depth-1" %}
+    </div>
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/car_path_RGRRT.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    This image can also have a caption. It's like magic.
+    Car Path planners. Left image shows KPIECE planner, middle image RRT and right image shows RGRRT planner.
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+Benchmarking of the planners for both cases were perofrmed and the results obtained as shown below:
+<h3>Pendulum</h3>
+<table border="1" style="width: 100%; text-align: center;">
+    <thead>
+        <tr>
+            <th colspan="4"><strong>Computation Time</strong></th>
+        </tr>
+        <tr>
+            <th><strong>RRT</strong></th>
+            <th><strong>KPIECE</strong></th>
+            <th><strong>RGRRT</strong></th>
+            <th><strong>Computation Time</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Min</td>
+            <td>Close to KPIECE</td>
+            <td>Least</td>
+            <td>Highest</td>
+        </tr>
+        <tr>
+            <td>Max</td>
+            <td>Highest</td>
+            <td>Close to RRT</td>
+            <td>Lowest</td>
+        </tr>
+        <tr>
+            <td>Median</td>
+            <td>Highest</td>
+            <td>Least</td>
+            <td>Close to RRT</td>
+        </tr>
+        <tr>
+            <td>1st Quartile</td>
+            <td>Close to RGRRT</td>
+            <td>Least</td>
+            <td>Highest</td>
+        </tr>
+        <tr>
+            <td>3rd Quartile</td>
+            <td>Highest</td>
+            <td>Least</td>
+            <td>Higher than RGRRT</td>
+        </tr>
+        <tr>
+            <td>Inter-Quartile Range</td>
+            <td>Widest</td>
+            <td>Smallest</td>
+            <td>Higher than KPIECE</td>
+        </tr>
+    </tbody>
+</table>
+<table border="1" style="width: 100%; text-align: center;">
+    <thead>
+        <tr>
+            <th colspan="4"><strong>Solution Length</strong></th>
+        </tr>
+        <tr>
+            <th><strong>RRT</strong></th>
+            <th><strong>KPIECE</strong></th>
+            <th><strong>RGRRT</strong></th>
+            <th><strong>Solution Length</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Min</td>
+            <td>Significantly high</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Max</td>
+            <td>Significantly high</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Median</td>
+            <td>Significantly high</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>1st Quartile</td>
+            <td>Significantly high</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>3rd Quartile</td>
+            <td>Significantly high</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Inter-Quartile Range</td>
+            <td>Similar to KPIECE</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+    </tbody>
+</table>
+<table border="1" style="width: 100%; text-align: center;">
+    <thead>
+        <tr>
+            <th colspan="4"><strong>Tree Nodes</strong></th>
+        </tr>
+        <tr>
+            <th><strong>RRT</strong></th>
+            <th><strong>KPIECE</strong></th>
+            <th><strong>RGRRT</strong></th>
+            <th><strong>Tree Nodes</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Min</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Max</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Median</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>1st Quartile</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>3rd Quartile</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Inter-Quartile Range</td>
+            <td>Highest</td>
+            <td>Similar to RGRRT</td>
+            <td>Least</td>
+        </tr>
+    </tbody>
+</table>
+<table border="1" style="width: 100%; text-align: center;">
+    <thead>
+        <tr>
+            <th colspan="4"><strong>Success Rate</strong></th>
+        </tr>
+        <tr>
+            <th><strong>RRT</strong></th>
+            <th><strong>KPIECE</strong></th>
+            <th><strong>RGRRT</strong></th>
+            <th><strong>Success Rate</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Approximate solution</td>
+            <td>100%</td>
+            <td>100%</td>
+            <td>100%</td>
+        </tr>
+    </tbody>
+</table>
+<br>
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+Summarizing from the above table, we conclude that:
+<ul>
+    <li>The median path length for RGRRT is the least.</li>
+    <li>The median number of tree nodes is very low for RGRRT.</li>
+</ul>
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+Car
+<table border="1" style="width: 100%; text-align: center;">
+    <thead>
+        <tr>
+            <th colspan="4"><strong>Computation Time</strong></th>
+        </tr>
+        <tr>
+            <th><strong>RRT</strong></th>
+            <th><strong>KPIECE</strong></th>
+            <th><strong>RGRRT</strong></th>
+            <th><strong>Computation Time</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Min</td>
+            <td>Higher than RGRRT</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Max</td>
+            <td>Close to KPIECE</td>
+            <td>Least</td>
+            <td>Highest</td>
+        </tr>
+        <tr>
+            <td>Median</td>
+            <td>Close to KPIECE</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>1st Quartile</td>
+            <td>Close to KPIECE</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>3rd Quartile</td>
+            <td>Close to KPIECE</td>
+            <td>Highest</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Inter-Quartile Range</td>
+            <td>Close to KPIECE</td>
+            <td>Smallest</td>
+            <td>Widest</td>
+        </tr>
+    </tbody>
+</table>
+<table border="1" style="width: 100%; text-align: center;">
+    <thead>
+        <tr>
+            <th colspan="4"><strong>Solution Length</strong></th>
+        </tr>
+        <tr>
+            <th><strong>RRT</strong></th>
+            <th><strong>KPIECE</strong></th>
+            <th><strong>RGRRT</strong></th>
+            <th><strong>Solution Length</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Min</td>
+            <td>Highest</td>
+            <td>Least</td>
+            <td>Close to KPIECE</td>
+        </tr>
+        <tr>
+            <td>Max</td>
+            <td>Highest</td>
+            <td>Higher than RGRRT</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Median</td>
+            <td>Highest</td>
+            <td>Least</td>
+            <td>Very close to KPIECE</td>
+        </tr>
+        <tr>
+            <td>1st Quartile</td>
+            <td>Highest</td>
+            <td>Least</td>
+            <td>Very close to KPIECE</td>
+        </tr>
+        <tr>
+            <td>3rd Quartile</td>
+            <td>Highest</td>
+            <td>Close to RGRRT</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Inter-Quartile Range</td>
+            <td>Highest</td>
+            <td>Higher than RGRRT</td>
+            <td>Least</td>
+        </tr>
+    </tbody>
+</table>
+<table border="1" style="width: 100%; text-align: center;">
+    <thead>
+        <tr>
+            <th colspan="4"><strong>Tree Nodes</strong></th>
+        </tr>
+        <tr>
+            <th><strong>RRT</strong></th>
+            <th><strong>KPIECE</strong></th>
+            <th><strong>RGRRT</strong></th>
+            <th><strong>Tree Nodes</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Min</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Max</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Median</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>1st Quartile</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>3rd Quartile</td>
+            <td>Highest</td>
+            <td>Significantly high</td>
+            <td>Least</td>
+        </tr>
+        <tr>
+            <td>Inter-Quartile Range</td>
+            <td>Highest</td>
+            <td>Higher than RGRRT</td>
+            <td>Least</td>
+        </tr>
+    </tbody>
+</table>
+<table border="1" style="width: 100%; text-align: center;">
+    <thead>
+        <tr>
+            <th colspan="4"><strong>Success Rate</strong></th>
+        </tr>
+        <tr>
+            <th><strong>RRT</strong></th>
+            <th><strong>KPIECE</strong></th>
+            <th><strong>RGRRT</strong></th>
+            <th><strong>Success Rate</strong></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Approximate solution</td>
+            <td>100%</td>
+            <td>100%</td>
+            <td>100%</td>
+        </tr>
+    </tbody>
+</table>
+<br>
 
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
-
-{% endraw %}
+Summarizing from the above table, we conclude that:
+<ul>
+    <li> The median path length for RGRRT and KPIECE is least and similar to each other. However path length varies more for KPIECE from one iteration to the other.</li>
+    <li> The median number of tree nodes is much much less for RGRRT.</li>
+</ul>

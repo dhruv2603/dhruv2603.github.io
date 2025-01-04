@@ -1,14 +1,10 @@
-github_users:
-  - torvalds
-  - alshedivat
+# github_users:
+#   - dhruv2603
 
-repo_description_lines_max: 2
+# repo_description_lines_max: 2
 
 github_repos:
-  - alshedivat/al-folio
-  - jekyll/jekyll
-  - twbs/bootstrap
-  - jquery/jquery
-  - FortAwesome/Font-Awesome
-  - mathjax/MathJax
-  - jpswalsh/academicons
+  - dhruv2603/Suntracker-on-Mobile-Robot
+  - dhruv2603/Kinodynamic-Planning-and-Mapping-of-environments-using-Drones
+  - dhruv2603/Quadrotor-Control
+  - dhruv2603/RBE_500_Foundations
