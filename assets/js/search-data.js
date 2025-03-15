@@ -398,6 +398,11 @@ ninja.data = [{
           description: "Boundary Detection and Image Recognition",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_project/";
+            },},{id: "projects-auto-pano",
+          title: 'Auto Pano',
+          description: "Panorama Stitching usinig Classical and Deep Learning methods",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/5_project/";
             },},{id: "projects-quadrotor-control",
           title: 'Quadrotor Control',
           description: "PID and LQR control of a Quadrotor",
