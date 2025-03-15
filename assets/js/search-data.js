@@ -393,6 +393,11 @@ ninja.data = [{
           description: "",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
+            },},{id: "projects-alohamora",
+          title: 'Alohamora',
+          description: "Boundary Detection and Image Recognition",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/4_project/";
             },},{id: "projects-quadrotor-control",
           title: 'Quadrotor Control',
           description: "PID and LQR control of a Quadrotor",
