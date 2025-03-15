@@ -2,7 +2,7 @@
 layout: page
 title: Auto Pano
 description: Panorama Stitching usinig Classical and Deep Learning methods
-img: assets/img/Alohamora/card_img.png
+img: assets/img/AutoPano/card_img.png
 importance: 1
 category: work
 ---

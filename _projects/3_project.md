@@ -3,7 +3,7 @@ layout: page
 title: Suntracker on Rocker-Bogie mechanism
 description:
 img: assets/img/Suntracker.jpg
-importance: 3
+importance: 2
 category: work
 ---
 
