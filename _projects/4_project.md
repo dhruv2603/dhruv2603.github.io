@@ -196,9 +196,9 @@ In this phase multiple neural network architectures are implemented and compared
 The primary objective is image classification using Neural networks. The model is trained on the CIFAR-10 dataset. There are a total of 60000 images in the dataset which are split into 50000 train images and 10000 test images. There are 10 classes in the dataset and the output of the model is a probability of the 10 classes while the input to the model being a single image. The training is performed using the PyTorch library.
 
 <h3 style="text-align: center;">Data Preprocessing</h3>
-The the training part:
+The training part:
 <ul>
-    <l1>The images are normalized between 0 and 1</li>
+    <li>The images are normalized between 0 and 1</li>
     <li>flipped horizontally</li> 
     <li>rotated by a maximum of 30 degrees</li> 
     <li>randomly affined</li>
