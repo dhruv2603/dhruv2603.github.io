@@ -134,10 +134,10 @@ This technique combines multiple images using the value alpha, which represents 
         {% include figure.liquid loading="eager" path="assets/img/AutoPano/stitching_1.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/AutoPano/stitching_2" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/AutoPano/stitching_2.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/AutoPano/stitching_3" title="example image" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/AutoPano/stitching_3.png" title="example image" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
@@ -190,11 +190,11 @@ network directly produces 8 real-valued numbers which are the predictions of the
 </div>
 
 Hyperparameters: The hyperparameters used for the model are as follows:
--- optimizer: SGD
--- learning rate: 0.006
--- loss metric: L1 norm
--- epochs: 100
--- batch size: 64
+- optimizer: SGD
+- learning rate: 0.006
+- loss metric: L1 norm
+- epochs: 100
+- batch size: 64
 
 Experiments and Results: The model is trained on the dataset of size 150,000 image pairs for 100 epochs for about 8.0 hours on a single NVIDIA RTX GPU. Each image is resized to 320x320 dimensions and subsequently converted to gray-scale.
 
@@ -218,7 +218,6 @@ Experiments and Results: The model is trained on the dataset of size 150,000 ima
 <h3 style="text-align: center;">Unsupervised Approach</h3>
 The unsupervised learning approach is a type of machine learning in which the model is trained using data that are not labeled, meaning that the input data do not have ground truth for comparison. In unsupervised learning, the goal is for the model to find patterns, relationships, or structures in the data without the need for explicit supervision.
 
-/div>
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/AutoPano/unsup_homo.png" title="example image" class="img-fluid rounded z-depth-1" %}
@@ -230,18 +229,18 @@ The unsupervised learning approach is a type of machine learning in which the mo
 
 HomographyNet: The model pipeline is an extension of the previous model, where the same HomographyNet model is used and two more blocks are added, namely the TensorDLT and Spatial transformer blocks. The HomographyNet model works the same way in the forward iteration of the model giving the same H4pt output.
 
--- The TensorDLT layer takes this output and the corners CA and calculates the estimated homography H̃BA.
--- The spatial transformer takes the original image IA and warps it using estimated homography to give an estimated
+- The TensorDLT layer takes this output and the corners CA and calculates the estimated homography H̃BA.
+- The spatial transformer takes the original image IA and warps it using estimated homography to give an estimated
 image I˜B .
--- Using the coordinates CA we extract the estimated patch P̃B from the estimated image I˜B .
--- The patches PB and P̃B are compared using L1 loss function and the weights of the model are updated to reduce this loss.
+- Using the coordinates CA we extract the estimated patch P̃B from the estimated image I˜B .
+- The patches PB and P̃B are compared using L1 loss function and the weights of the model are updated to reduce this loss.
 
 Hyperparameters: The hyperparameters used for the
 model are as follows:
--- optimizer: SGD
--- learning rate: 0.0001
--- loss metric: L1 norm
--- epochs: 50
+- optimizer: SGD
+- learning rate: 0.0001
+- loss metric: L1 norm
+- epochs: 50
 
 Experiments and Results: The model is trained on the dataset of size 150,000 image pairs for 50 epochs for about 12 hours on an NVIDIA A30 GPU. All images are resized to 320x320 and converted to grayscale as done for the supervised training. The inputs are provided to the model and the H4pt values are obtained which are given to the tesnorDLT layer along with CA to obtain the estimated homography matrix. We use kornia transform to warp the image IA to obtain the estimated image I˜B . Applying the coordinates CA to I˜B gives us the estimate patch P̃B . The loss L1 is calculated for PB and P̃B and the model weights are updated based on the loss value.
 
