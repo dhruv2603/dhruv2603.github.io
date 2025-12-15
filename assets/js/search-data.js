@@ -418,6 +418,11 @@ ninja.data = [{
           description: "",
           section: "Projects",handler: () => {
               window.location.href = "/projects/8_project/";
+            },},{id: "projects-ukf-based-inertial-navigation",
+          title: 'UKF-Based Inertial Navigation',
+          description: "Nonlinear Kalman filtering for MEMS-IMU and GNSS fusion on real vehicle trajectories",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/9_project/";
             },},{
       id: 'light-theme',
       title: 'Change theme to light',
