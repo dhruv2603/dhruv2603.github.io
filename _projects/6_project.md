@@ -13,11 +13,11 @@ The work is split into two tightly coupled parts: a perspective-n-point (PnP) ob
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/ParticleFilter/tag.png" title="System overview" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/ParticleFilter/tag.png" title="April Tag" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
-    High-level pipeline: AprilTag-based pose estimation feeding a particle filter for drone navigation. 
+    An April Tag. 
 </div>
 
 <h1>Drone Observation Model</h1>
@@ -76,7 +76,7 @@ A low-variance resampling algorithm then draws a new particle set from the weigh
 
 <div class="row justify-content-sm-center">
     <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/ParticleFilter/particles.png" title="Particle Filter" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/ParticleFilter/trajectory_pf.png" title="Particle Filter" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
 <div class="caption">
