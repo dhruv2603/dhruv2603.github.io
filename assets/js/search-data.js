@@ -378,7 +378,12 @@ ninja.data = [{
           section: "News",},{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
-          section: "News",},{id: "projects-path-planning-with-kinodynamic-constraints",
+          section: "News",},{id: "projects-victoria-park-slam",
+          title: 'Victoria Park SLAM',
+          description: "Lidar- and odometry-based SLAM with landmark mapping in Victoria Park",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/10_project/";
+            },},{id: "projects-path-planning-with-kinodynamic-constraints",
           title: 'Path Planning with Kinodynamic Constraints',
           description: "",
           section: "Projects",handler: () => {
