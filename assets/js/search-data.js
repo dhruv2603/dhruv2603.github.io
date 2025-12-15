@@ -403,6 +403,11 @@ ninja.data = [{
           description: "Panorama Stitching usinig Classical and Deep Learning methods",
           section: "Projects",handler: () => {
               window.location.href = "/projects/5_project/";
+            },},{id: "projects-particle-filter-drone-navigation",
+          title: 'Particle Filter Drone Navigation',
+          description: "Vision-based pose estimation and particle filter navigation for a nano-quadrotor",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/6_project/";
             },},{id: "projects-quadrotor-control",
           title: 'Quadrotor Control',
           description: "PID and LQR control of a Quadrotor",
